@@ -49,7 +49,7 @@
         <div class="post-meta">
           <span class="post-time">
             <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
+              <i class="fa fa-calendar"></i>
             </span>
             <span class="post-meta-item-text">{{ __('post.posted') }}</span>
             <time itemprop="dateCreated" datetime="{{ moment(post.date).format() }}" content="{{ date(post.date, config.date_format) }}">
@@ -58,21 +58,40 @@
           </span>
 
           {% if post.categories and post.categories.length %}
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="fa fa-th"></i>
               </span>
               <span class="post-meta-item-text">{{ __('post.in') }}</span>
               {% for cat in post.categories %}
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="{{ url_for(cat.path) }}" itemprop="url" rel="index">
-                    <span itemprop="name">{{ cat.name }}</span>
-                  </a>
+                  <a href="{{ url_for(cat.path) }}" itemprop="url" rel="index"><span itemprop="name">{{ cat.name }}</span></a>
                 </span>
 
                 {% set cat_length = post.categories.length %}
                 {% if cat_length > 1 and loop.index !== cat_length %}
+                  {{ __('symbol.comma') }}
+                {% endif %}
+
+              {% endfor %}
+            </span>
+          {% endif %}
+
+          {% if post.tags and post.tags.length%}
+            <span class="post-category">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-tags"></i>
+              </span>
+              <span class="post-meta-item-text">{{ __('post.tags') }}</span>
+              {% for tag in post.tags %}
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="{{ url_for(tag.path) }}" itemprop="url" rel="index"><span itemprop="name">{{ tag.name }}</span></a>
+                </span>
+
+                {% set tag_length = post.tag.length %}
+                {% if tag_length > 1 and loop.index !== tag_length %}
                   {{ __('symbol.comma') }}
                 {% endif %}
 
