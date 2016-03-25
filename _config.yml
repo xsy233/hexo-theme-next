@@ -30,7 +30,7 @@ menu:
   archives: /archives
   categories: /categories
   tags: /tags
-  about: /about
+  #about: /about
   #commonweal: /404.html
 
 
@@ -239,7 +239,7 @@ baidu_push: false
 #! ---------------------------------------------------------------
 
 # Motion
-use_motion: true
+use_motion: false
 
 # Fancybox
 fancybox: true

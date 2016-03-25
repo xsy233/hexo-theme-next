@@ -87,7 +87,7 @@
               <span class="post-meta-item-text">{{ __('post.tags') }}</span>
               {% for tag in post.tags %}
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="{{ url_for(tag.path) }}" itemprop="url" rel="index"><span itemprop="name">{{ tag.name }}</span></a>
+                  <a href="{{ url_for(tag.path) }}" itemprop="url" rel="index"><span itemprop="name">#{{ tag.name }}</span></a>
                 </span>
 
                 {% set tag_length = post.tag.length %}
@@ -204,13 +204,13 @@
     </div>
 
     <footer class="post-footer">
-      {% if post.tags and post.tags.length and not is_index %}
-        <div class="post-tags">
-          {% for tag in post.tags %}
-            <a href="{{ url_for(tag.path) }}" rel="tag">#{{ tag.name }}</a>
-          {% endfor %}
-        </div>
-      {% endif %}
+      <!--{% if post.tags and post.tags.length and not is_index %}-->
+        <!--<div class="post-tags">-->
+          <!--{% for tag in post.tags %}-->
+            <!--<a href="{{ url_for(tag.path) }}" rel="tag">#{{ tag.name }}</a>-->
+          <!--{% endfor %}-->
+        <!--</div>-->
+      <!--{% endif %}-->
 
       {% if not is_index and (post.prev or post.next) and not navlessPost %}
         <div class="post-nav">
